@@ -23,6 +23,8 @@ namespace ConsoleApplication1
             eleve.AddEvalutation(evaluation: 'T', title: "Mathématique");
             eleve.AddEvalutation("Néerlandais");
 
+            System.Console.Write(eleve);
+
             List<Pupil> lstPupils = new List<Pupil>()
             {
                 new Pupil("Guebel", 10, 5),
@@ -32,9 +34,36 @@ namespace ConsoleApplication1
                 new Pupil("Herou", 4),
             };
 
-            var pupilGrade1Plus6 = from 
 
-            System.Console.Write(eleve);
+            var pupilGrade1Plus6 = from pupil in lstPupils
+                                   where pupil.Age > 6 && pupil.Grade == 1
+                                   select pupil;
+
+            if(pupilGrade1Plus6 != null)
+            {
+                foreach(var pupil in pupilGrade1Plus6)
+                {
+                    System.Console.Write(pupil);
+                    
+                }
+            }
+
+            List<Person> listPersons = new List<Person>()
+            {
+                new Person("Demoumou", 26),
+                new Person("Lagneaux", 23),
+                new Person("BBBB", 5),
+                new Person("CCCC", 2),
+                new Person("DDDD", 12),
+            };
+
+            var listFusion = listPersons.Union(lstPupils);
+
+            foreach(var person in listFusion)
+            {
+                System.Console.Write(person);
+            }
+
             System.Console.Read();
         }
     }

@@ -60,14 +60,14 @@ namespace ConsoleApplication1
             int cptActivities = LstActivities.Count(); // mets le nbr d'activité
             if(cptActivities == 0)
             {
-                ch += " n'a pas encore choisi d'activité";
+                ch += " n'a pas encore choisi d'activité\n";
             }
             else
             {
-                ch += " a comme activitée(s) :";
+                ch += " a comme activitée(s) :\n";
                 foreach (Activity activity in LstActivities)
                 {
-                    ch += " "+activity + " ";
+                    ch += " "+activity + " \n";
                 }
             }
 
