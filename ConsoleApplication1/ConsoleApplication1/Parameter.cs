@@ -10,7 +10,7 @@ namespace ConsoleApplication1
     {
         public const int MAXACTIVITIES = 10;
 
-        public enum enumEvaluation { S = 1, R , T};
+        public enum enumEvaluation { Satisfaisant = 'S', Recommencez = 'R', Tresbon= 'T' };
 
         
     }

@@ -87,6 +87,7 @@ namespace ConsoleApplication1
             foreach (var pupil in listPupilsNoDuplicated)
             {
                 nbPupil++;
+                System.Console.Write(pupil);
             }
             System.Console.Write(nbPupil);
             System.Console.WriteLine("\r\nFin de la liste dupliquée");

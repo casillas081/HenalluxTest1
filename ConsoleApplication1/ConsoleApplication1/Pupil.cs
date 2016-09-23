@@ -43,7 +43,7 @@ namespace ConsoleApplication1
             LstActivities.Add(activity);
         }
 
-        public void AddEvalutation(String title = null, char evaluation = 'S')
+        public void AddEvalutation(String title = null, char evaluation = (char) Parameter.enumEvaluation.Satisfaisant )
         {
             for(int i = 0; i < TabEval.Length && i < LstActivities.Count(); i++)
             {
