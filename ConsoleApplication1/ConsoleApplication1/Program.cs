@@ -35,17 +35,21 @@ namespace ConsoleApplication1
             };
 
 
-            var pupilGrade1Plus6 = from pupil in lstPupils
-                                   where pupil.Age > 6 && pupil.Grade == 1
-                                   select pupil;
+            //var pupilGrade1Plus6 = from pupil in lstPupils
+            //                       where pupil.Age > 6 && pupil.Grade == 1
+            //                       select pupil;
 
-            if(pupilGrade1Plus6 != null)
+            var pupilGrade1Plus6 = lstPupils.Where(pupilFound => pupilFound.Age > 6 && pupilFound.Grade == 1);
+
+            if (pupilGrade1Plus6 != null)
             {
-                foreach(var pupil in pupilGrade1Plus6)
+                System.Console.WriteLine("\r\nDebut pupil plus de 6 ans et encore grade 1");
+                foreach (var pupil in pupilGrade1Plus6)
                 {
                     System.Console.Write(pupil);
                     
                 }
+                System.Console.WriteLine("\r\nFin pupil plus de 6 ans et encore grade 1");
             }
 
             List<Person> listPersons = new List<Person>()
@@ -59,10 +63,33 @@ namespace ConsoleApplication1
 
             var listFusion = listPersons.Union(lstPupils);
 
-            foreach(var person in listFusion)
+            System.Console.WriteLine("\r\nDebut de la liste fusionne");
+            foreach (var person in listFusion)
             {
                 System.Console.Write(person);
             }
+            System.Console.WriteLine("\r\nFin de la liste fusionne");
+
+            List<Pupil> listPupilsDuplicated = new List<Pupil>()
+            {
+                new Pupil("Flo", 10, 5),
+                new Pupil("Marti", 7),
+                new Pupil("Lolo", 9),
+                new Pupil("Lolo", 9),
+                new Pupil("Nico", 4),
+                new Pupil("Flo", 10, 5),
+            };
+
+            IEnumerable<Pupil> listPupilsNoDuplicated = listPupilsDuplicated.Distinct<Pupil>(new PersonComparer());
+
+            System.Console.WriteLine("\r\nDebut de la liste dupliquée");
+            var nbPupil = 0;
+            foreach (var pupil in listPupilsNoDuplicated)
+            {
+                nbPupil++;
+            }
+            System.Console.Write(nbPupil);
+            System.Console.WriteLine("\r\nFin de la liste dupliquée");
 
             System.Console.Read();
         }

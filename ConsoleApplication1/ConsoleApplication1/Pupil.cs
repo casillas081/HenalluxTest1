@@ -33,7 +33,7 @@ namespace ConsoleApplication1
         {
             Grade = grade;
             LstActivities = new List<Activity>();
-            TabEval = new char[10];
+            TabEval = new char[Parameter.MAXACTIVITIES];
         }
 
         public Pupil(String name, int age) : this(name, age, 1) { }

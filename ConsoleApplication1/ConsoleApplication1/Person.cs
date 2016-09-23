@@ -26,7 +26,7 @@ namespace ConsoleApplication1
 
         public override String ToString()
         {
-            return Name + " agée de " + Age + " ans";
+            return Name + " agée de " + Age + " ans\r\n";
         }
     }
 }
