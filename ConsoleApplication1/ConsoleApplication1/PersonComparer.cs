@@ -10,7 +10,7 @@ namespace ConsoleApplication1
     {
         public bool Equals(Person x, Person y)
         {
-            if (x.GetHashCode() == y.GetHashCode())
+            if (GetHashCode(x) == GetHashCode(y))
                 return true;
             else
                 return false;
