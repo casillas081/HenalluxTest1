@@ -20,12 +20,20 @@ namespace ConsoleApplication1
 
 
 
-        private char[] tabEval;
+        //private char[] pupilEvaluations;
 
-        public char[] TabEval
+        //public char[] PupilEvaluations
+        //{
+        //    get { return pupilEvaluations; }
+        //    set { pupilEvaluations = value; }
+        //}
+
+        private Dictionary<String, char> pupilActivities = new Dictionary<String, char>();
+        public Dictionary<String, char> PupilActivities { get; set; }
+
+        public void AddActivity(String activityTitle)
         {
-            get { return tabEval; }
-            set { tabEval = value; }
+            pupilActivities.Add(activityTitle, '0');
         }
 
 
@@ -33,45 +41,67 @@ namespace ConsoleApplication1
         {
             Grade = grade;
             LstActivities = new List<Activity>();
-            TabEval = new char[Parameter.MAXACTIVITIES];
+            //PupilEvaluations = new char[Parameter.MAXACTIVITIES];
+            PupilActivities = new Dictionary<string, char>();
+
         }
 
         public Pupil(String name, int age) : this(name, age, 1) { }
 
-        public void AddActivity(Activity activity)
-        {
-            LstActivities.Add(activity);
-        }
+        //public void AddActivity(Activity activity)
+        //{
+        //    lstActivities.Add(activity);
+        //}
 
-        public void AddEvalutation(String title = null, char evaluation = (char) Parameter.enumEvaluation.Satisfaisant )
+        public void AddEvalutation(String title = null, char evaluation = (char)Parameter.enumEvaluation.Satisfaisant)
         {
-            for(int i = 0; i < TabEval.Length && i < LstActivities.Count(); i++)
-            {
-                if (LstActivities.ElementAt(i).Equals(title))
-                {
-                    TabEval[i] = evaluation;
-                }
-            }
+            //for (int i = 0; i < PupilEvaluations.Length && i < LstActivities.Count(); i++)
+            //{
+            //    if (LstActivities.ElementAt(i).Equals(title))
+            //    {
+            //        PupilEvaluations[i] = evaluation;
+            //    }
+            //}
+            if (title != null) PupilActivities[title] = evaluation;
         }
 
         public override String ToString()
         {
-            string ch = base.ToString(); // reprend le toString de Person
-            int cptActivities = LstActivities.Count(); // mets le nbr d'activité
-            if(cptActivities == 0)
+            string ch = HeaderPupil();
+            ch = PrintActivitiesPupil(ch);
+
+            return ch;
+
+
+        }
+
+        private string PrintActivitiesPupil(string ch)
+        {
+            int cptActivities = pupilActivities.Count(); // mets le nbr d'activité
+            if (cptActivities == 0)
             {
                 ch += " n'a pas encore choisi d'activité\n";
             }
             else
             {
                 ch += " a comme activitée(s) :\n";
-                foreach (Activity activity in LstActivities)
+                //foreach (Activity activity in LstActivities)
+                for(int i = 0; i < pupilActivities.Count(); i ++)
                 {
-                    ch += " "+activity + " \n";
+                    //ch += " " + activity + " \n";
+                    ch += PupilActivities.ElementAt(i).Key.ToString() + " : " + PupilActivities.ElementAt(i).Value;
                 }
             }
 
             return ch;
         }
+
+        private string HeaderPupil()
+        {
+            return base.ToString();
+            // reprend le toString de Person
+        }
+
+        
     }
 }

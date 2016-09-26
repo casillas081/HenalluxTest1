@@ -15,9 +15,9 @@ namespace ConsoleApplication1
             Activity activities1 = new Activity("Néerlandais", false);
             Activity activities2 = new Activity("Mathématique", true);
 
-            eleve.AddActivity(activities);
-            eleve.AddActivity(activities1);
-            eleve.AddActivity(activities2);
+            eleve.AddActivity("Principe de programmation");
+            eleve.AddActivity("Néerlandais");
+            eleve.AddActivity("Mathématique");
 
             eleve.AddEvalutation("Principe de programmation");
             eleve.AddEvalutation(evaluation: 'T', title: "Mathématique");
